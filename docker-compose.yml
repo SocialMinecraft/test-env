@@ -55,4 +55,18 @@ services:
     ports:
       - "4222:4222"
       - "8222:8222"
-
+  db:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    ports:
+      - 127.0.0.1:5432:5432
+    #volumes:
+    #  - ./data/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: Meepers
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 127.0.0.1:8585:8080
